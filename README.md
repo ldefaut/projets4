@@ -9,8 +9,8 @@
 - php :  
 - [ ] statut superAdmin  
 - [ ] connexion automatique  
-- [ ] Verification des questions   
-- [ ] suppression des questions  
+- [x] Verification des questions   
+- [x] suppression des questions  
 - [ ] comptage des questions en jeu -> comptage des points  
 
 - pages :  
