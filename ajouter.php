@@ -13,7 +13,10 @@ catch (Exception $e)
 
 session_start();
 
-$status = $BDDreponse->query("SELECT email, role from connexion where id='$_SESSION[id]' and pseudo='$_SESSION[pseudo]'");
+$coID = isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
+$coPseudo = isset($_SESSION['pseudo']) ? $_SESSION['pseudo'] : NULL;
+
+$status = $BDDreponse->query("SELECT email, role from connexion where id='$coID' and pseudo='$coPseudo'");
 $resStatus= $status->fetch();
 $role = $resStatus['role'];
 
@@ -29,7 +32,7 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 	<?php
 	if ($role=="admin"){
 		?>
-		<a href="verifier.php">Verifier une question</a>
+		<a href="verification.php">Verifier une question</a>
 		<?php
 	}
 	?>
@@ -58,7 +61,7 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 		$Niveau = $_POST['niveau'];
 
 
-		$maxID = $BDDreponse -> query('SELECT COUNT(*) from reponses');
+		$maxID = $BDDreponse -> query('SELECT MAX( id ) from reponses');
 		$idmax= (int)$maxID->fetchColumn();
 		$NewID = $idmax+1	;
 

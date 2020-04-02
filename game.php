@@ -16,7 +16,7 @@ $idmax= (int)$maxID->fetchColumn();
 
 $randID = rand(1, $idmax);
 
-$result = $BDDreponse ->query('SELECT * FROM reponses WHERE id='.$randID);
+$result = $BDDreponse ->query('SELECT * FROM reponses ORDER BY RAND() limit 1');
 while ($donnees = $result->fetch())
 {
 	?>

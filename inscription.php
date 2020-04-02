@@ -44,14 +44,14 @@ if ($Nverif_email==0) {
 		$pseudo=isset($_POST['username']) ? $_POST['username'] : NULL;
 
 
-		$maxID = $BDDConnexion -> query('SELECT COUNT(*) from connexion');
+		$maxID = $BDDConnexion -> query('SELECT MAX( id ) from connexion');
 		$idmax= (int)$maxID->fetchColumn();
 		$NewID = $idmax+1	;
 
 		$req = $BDDConnexion->query("INSERT INTO connexion(id, pseudo, pass, email, date_inscription) VALUES('$NewID','$pseudo', '$pass_hache', '$email', CURDATE())");
-
 		header('Location: connexion.php');
 		exit;
+		echo $pseudo;
 	}
 	else{
 		echo "indiquez des mots de passe correspondants";
