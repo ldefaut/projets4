@@ -1,43 +1,16 @@
 <?php
 
-try {
-	$BDDreponse  = new PDO('mysql:	host=localhost;
-		dbname=projet;
-		charset=utf8', 
-		'root', '');
-}
-catch (Exception $e)
-{
-	die('Erreur : ' . $e->getMessage());
-}
+require("header.php");
 
-session_start();
 
-$coID = isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
-$coPseudo = isset($_SESSION['pseudo']) ? $_SESSION['pseudo'] : NULL;
-
-$status = $BDDreponse->query("SELECT email, role from connexion where id='$coID' and pseudo='$coPseudo'");
-$resStatus= $status->fetch();
-$role = $resStatus['role'];
-
+?>
+<h1>Ajouter une question</h1>
+<?php
 
 if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 {
-	echo 'Bonjour ' . $_SESSION['pseudo'];
-	?>
-	<h1>Ajouter une question</h1>
 
-	<a href="index.php">Index</a>
-	<a href="game.php">Jeu</a>
-	<?php
-	if ($role=="admin"){
-		?>
-		<a href="verification.php">Verifier une question</a>
-		<?php
-	}
 	?>
-	<a href="deconnexion.php">Se Déconnecter</a>
-
 	<form action="ajouter.php" autocomplete="off" method="post" accept-charset="utf-8">
 		<label for="question">Question : </label><input type="text" name="question" id="question"><br/>
 		<label for="reponse">Reponse : </label>
@@ -57,8 +30,9 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 	</form>
 
 	<?php
-	$maxID = $BDDreponse -> query('SELECT COUNT(*) from reponses');
+	$maxID = $BDD -> query('SELECT COUNT(*) from reponses');
 	$idmax= (int)$maxID->fetchColumn();
+
 	if ((isset($_POST['question']) ? $_POST['question'] : NULL)!='' AND (isset($_POST['reponse']) ? $_POST['reponse'] : NULL)!='' AND (isset($_POST['explication']) ? $_POST['explication'] : NULL)!='' AND (isset($_POST['niveau']) ? $_POST['niveau'] : NULL)!=''){
 		$Question= $_POST['question'];
 		$Reponse = $_POST['reponse'];
@@ -66,13 +40,14 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 		$Niveau = $_POST['niveau'];
 
 
-		$maxID = $BDDreponse -> query('SELECT MAX( id ) from reponses');
+		$maxID = $BDD -> query('SELECT MAX( id ) from reponses');
 		$idmax= (int)$maxID->fetchColumn();
 		$NewID = $idmax+1	;
 
-		$BDDreponse-> query("INSERT INTO reponses(question, reponse, explication, niveau, id) VALUES('$Question', '$Reponse', '$Explication', '$Niveau', '$NewID')");
+		$BDD-> query("INSERT INTO reponses(question, reponse, explication, niveau, id) VALUES('$Question', '$Reponse', '$Explication', '$Niveau', '$NewID')");
 
 		header('Location: http://projets4/ajouter.php');
+
 	}
 }
 else{

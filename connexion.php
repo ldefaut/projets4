@@ -1,7 +1,9 @@
+<?php
+require('header.php');
+?>
+
 <form action="connexion.php" method="POST">
-    <a href="index.php">Index</a>
-    <a href="inscription.php">Créer un compte</a>
-    <a href="ajouter.php">Ajouter une question</a>
+
     <h1>Connexion</h1>
 
     <label for="username"><b>Nom d'utilisateur</b></label>
@@ -16,20 +18,9 @@
 
 <?php
 
-try {
-    $BDDConnexion  = new PDO('mysql:  host=localhost;
-        dbname=projet;
-        charset=utf8', 
-        'root', '');
-}
-catch (Exception $e)
-{
-    die('Erreur : ' . $e->getMessage());
-}
-
 
 $username = isset($_POST['username']) ? $_POST['username'] : NULL;
-$req = $BDDConnexion->query("SELECT * FROM connexion WHERE pseudo ='$username'");
+$req = $BDD->query("SELECT * FROM connexion WHERE pseudo ='$username'");
 // print_r($req);
 $resultat = $req->fetch();
 // echo $resultat;
