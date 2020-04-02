@@ -40,7 +40,12 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 
 	<form action="ajouter.php" autocomplete="off" method="post" accept-charset="utf-8">
 		<label for="question">Question : </label><input type="text" name="question" id="question"><br/>
-		<label for="reponse">Reponse : </label><input type="text" name="reponse" id="reponse"><br/>
+		<label for="reponse">Reponse : </label>
+		<select name="reponse" id="reponse">
+			<option value="VRAI">Vrai</option>
+			<option value="FAUX">Faux</option>}
+		</select>
+		<br/>
 		<label for="explain">Explication : </label><input type="text" name="explication" id="explication"><br/>
 		<label for="niveau">Niveau : </label> 
 		<select name="niveau" id="niveau">
