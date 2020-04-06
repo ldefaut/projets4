@@ -27,7 +27,7 @@ require("header.php");
 				<form action="verification.php" method="post" accept-charset="utf-8">
 					<td><?php echo $count;?></td>
 					<td>
-						<input type="text" name="question" id="question" value="<?php echo $donnees['question'];?>">
+						<input type="text" name="question" id="question" value="<?php echo html_entity_decode(htmlspecialchars_decode($donnees['question']));?>">
 					</td>
 					<td>		
 						<select name="reponse" id="reponse">
@@ -46,7 +46,7 @@ require("header.php");
 						</select>
 					</td>
 					<td>
-						<input type="text" name="explication" id="explication" value="<?php echo $donnees['explication'];?>">
+						<input type="text" name="explication" id="explication" value="<?php echo html_entity_decode(htmlspecialchars_decode($donnees['explication']));?>">
 					</td>
 					<td>
 						<select name="niveau" id="niveau">
@@ -73,11 +73,11 @@ require("header.php");
 						</select>
 					</td>
 					<td>
-						<?php echo $donnees['status'];?>
+						<?php echo html_entity_decode(htmlspecialchars_decode($donnees['status']));?>
 						<select name="status" id="status">
-							<option value="vérifiée">Vérifier</option>
-							<option value="à vérifier">à vérifier</option>
-							<option value="rejetée">Rejeter</option>
+							<option value="Vérifiée">Vérifier</option>
+							<option value="A vérifier">à vérifier</option>
+							<option value="Rejetée">Rejeter</option>
 						</select>
 					</td>
 					<td>
@@ -87,20 +87,20 @@ require("header.php");
 				</form>
 				<?php 
 				$ID = isset($_POST['id']) ? $_POST['id'] : NULL;
+				$safeQuestion = htmlspecialchars(htmlentities(isset($_POST["question"]) ? $_POST["question"] : NULL, ENT_QUOTES), ENT_QUOTES);
+				$safeReponse = htmlspecialchars(htmlentities(isset($_POST["reponse"]) ? $_POST["reponse"] : NULL, ENT_QUOTES), ENT_QUOTES);
+				$safeExplication = htmlspecialchars(htmlentities(isset($_POST["explication"]) ? $_POST["explication"] : NULL, ENT_QUOTES), ENT_QUOTES);
+				$safeNiveau = htmlspecialchars(htmlentities(isset($_POST["niveau"]) ? $_POST["niveau"] : NULL, ENT_QUOTES), ENT_QUOTES);
+				$safeStatut = htmlspecialchars(htmlentities(isset($_POST["status"]) ? $_POST["status"] : NULL, ENT_QUOTES), ENT_QUOTES);
+				if ($safeQuestion!='' and $safeReponse!='' and $safeExplication!='' and $safeNiveau!='' and $safeStatut!=''){
 
-				if ((isset($_POST['question']) ? $_POST['question'] : NULL)!='' AND (isset($_POST['reponse']) ? $_POST['reponse'] : NULL)!='' AND (isset($_POST['explication']) ? $_POST['explication'] : NULL)!='' AND (isset($_POST['niveau']) ? $_POST['niveau'] : NULL)!=''){
-					$Question= $_POST['question'];
-					$Reponse = $_POST['reponse'];
-					$Explication = $_POST['explication'];
-					$Niveau = $_POST['niveau'];
-					$Statut= $_POST['status'];
 
-
-					$BDD-> query("UPDATE reponses SET question='$Question', reponse='$Reponse', explication='$Explication', niveau='$Niveau', status='$Statut' Where id='$ID'");
+					$BDD-> query("UPDATE reponses SET question='$safeQuestion', reponse='$safeReponse', explication='$safeExplication', niveau='$safeNiveau', status='$safeStatut' Where id='$ID'");
 
 					header('Location: http://projets4/verification.php');
 
-				}?>
+				}
+				?>
 			</tr>
 			<?php 
 		}

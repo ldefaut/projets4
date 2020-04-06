@@ -33,18 +33,21 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 	$maxID = $BDD -> query('SELECT COUNT(*) from reponses');
 	$idmax= (int)$maxID->fetchColumn();
 
-	if ((isset($_POST['question']) ? $_POST['question'] : NULL)!='' AND (isset($_POST['reponse']) ? $_POST['reponse'] : NULL)!='' AND (isset($_POST['explication']) ? $_POST['explication'] : NULL)!='' AND (isset($_POST['niveau']) ? $_POST['niveau'] : NULL)!=''){
-		$Question= $_POST['question'];
-		$Reponse = $_POST['reponse'];
-		$Explication = $_POST['explication'];
-		$Niveau = $_POST['niveau'];
+	$safeQuestion = htmlspecialchars(htmlentities(isset($_POST["question"]) ? $_POST["question"] : NULL, ENT_QUOTES), ENT_QUOTES);
+	$safeReponse = htmlspecialchars(htmlentities(isset($_POST["reponse"]) ? $_POST["reponse"] : NULL, ENT_QUOTES), ENT_QUOTES);
+	$safeExplication = htmlspecialchars(htmlentities(isset($_POST["explication"]) ? $_POST["explication"] : NULL, ENT_QUOTES), ENT_QUOTES);
+	$safeNiveau = htmlspecialchars(htmlentities(isset($_POST["niveau"]) ? $_POST["niveau"] : NULL, ENT_QUOTES), ENT_QUOTES);
+
+
+	if ($safeQuestion!='' and $safeReponse!='' and $safeExplication!='' and $safeNiveau!=''){
+		print_r($safeExplication);
 
 
 		$maxID = $BDD -> query('SELECT MAX( id ) from reponses');
 		$idmax= (int)$maxID->fetchColumn();
-		$NewID = $idmax+1	;
+		$NewID = $idmax+1;
 
-		$BDD-> query("INSERT INTO reponses(question, reponse, explication, niveau, id) VALUES('$Question', '$Reponse', '$Explication', '$Niveau', '$NewID')");
+		$BDD-> query("INSERT INTO reponses(question, reponse, explication, niveau, id) VALUES('$safeQuestion', '$safeReponse', '$safeExplication', '$safeNiveau', '$NewID')");
 
 		header('Location: http://projets4/ajouter.php');
 

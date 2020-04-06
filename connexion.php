@@ -18,19 +18,18 @@ require('header.php');
 
 <?php
 
+$username = htmlspecialchars(htmlentities(isset($_POST["username"]) ? $_POST["username"] : NULL, ENT_QUOTES), ENT_QUOTES);
+$password = htmlspecialchars(htmlentities(isset($_POST["password"]) ? $_POST["password"] : NULL, ENT_QUOTES), ENT_QUOTES);
 
-$username = isset($_POST['username']) ? $_POST['username'] : NULL;
 $req = $BDD->query("SELECT * FROM connexion WHERE pseudo ='$username'");
-// print_r($req);
 $resultat = $req->fetch();
-// echo $resultat;
 
 // Comparaison du pass envoyé via le formulaire avec la base
-$isPasswordCorrect = password_verify(isset($_POST['password']) ? $_POST['password'] : NULL, $resultat['pass']);
+$isPasswordCorrect = password_verify($password, $resultat['pass']);
 
 if (!$resultat)
 {
-    echo 'Mauvais identifiant ou mot de passe ! '.$username.' ,'.(isset($_POST['password']) ? $_POST['password'] : NULL).', '.$resultat['pass'].', '.$isPasswordCorrect;
+    echo 'Mauvais identifiant ou mot de passe !';
 }
 else
 {

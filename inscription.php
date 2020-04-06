@@ -23,15 +23,18 @@ require('header.php');
 <?php 
 
 // Vérification de la validité des informations
-$email=isset($_POST['email']) ? $_POST['email'] : NULL;
+$pseudo = htmlspecialchars(htmlentities(isset($_POST["username"]) ? $_POST["username"] : NULL, ENT_QUOTES), ENT_QUOTES);
+$email = htmlspecialchars(htmlentities(isset($_POST["email"]) ? $_POST["email"] : NULL, ENT_QUOTES), ENT_QUOTES);
+$password = htmlspecialchars(htmlentities(isset($_POST["password"]) ? $_POST["password"] : NULL, ENT_QUOTES), ENT_QUOTES);
+$passwordConf = htmlspecialchars(htmlentities(isset($_POST["conf-password"]) ? $_POST["conf-password"] : NULL, ENT_QUOTES), ENT_QUOTES);
+
 $verif_email = $BDD->query("SELECT COUNT(*) from connexion where email='$email'");
 $Nverif_email = (int) $verif_email->fetchColumn();
+
 if ($Nverif_email==0) {
-	if((isset($_POST['password']) ? $_POST['password'] : NULL)==(isset($_POST['conf-password']) ? $_POST['conf-password'] : NULL)){
+	if($password==$passwordConf and pseudo!='' and $email !='' and $password!='' and $passwordConf!=''){
 
-		$pass_hache = password_hash(isset($_POST['password']) ? $_POST['password'] : NULL, PASSWORD_DEFAULT);
-		$pseudo=isset($_POST['username']) ? $_POST['username'] : NULL;
-
+		$pass_hache = password_hash($password, PASSWORD_DEFAULT);
 
 		$maxID = $BDD -> query('SELECT MAX( id ) from connexion');
 		$idmax= (int)$maxID->fetchColumn();

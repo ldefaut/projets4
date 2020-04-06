@@ -11,7 +11,7 @@
 - [ ] connexion automatique  
 - [x] Verification des questions   
 - [x] suppression des questions  
-- [ ] comptage des questions en jeu -> comptage des points  
+- [x] comptage des questions en jeu -> comptage des points  
 
 - pages :  
 - [ ] popup cookies  
