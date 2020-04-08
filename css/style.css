@@ -1,0 +1,36 @@
+.navbar{
+	top: 0px;
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+}
+
+.cache{
+	height: 100px;
+}
+
+#searchBar {
+	position: fixed;
+	top: 56px;
+	border: 0;
+	border-bottom: solid 2px lightblue;
+	border-radius: 0;
+	padding-left: 50px;
+	z-index: 1;
+	animation: degrade 3s ease-in-out alternate infinite;
+}
+
+@keyframes degrade {
+	0%{border-bottom: solid 1px lightblue;}
+	100%{border-bottom: solid 1px lightgreen;}
+}
+
+#searchBar:focus{
+	box-shadow: 0 0 0 0;
+	animation: textanim 0.5s alternate both;
+}
+
+@keyframes textanim{
+	0%{font-size: medium; border-bottom: 1px solid lightblue;}
+	100%{font-size: large;border-bottom: 1.5px solid lightgreen;}
+}

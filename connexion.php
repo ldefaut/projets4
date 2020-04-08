@@ -1,5 +1,8 @@
 <?php
 require('header.php');
+
+$mon_tab  = array();
+$_SESSION['mon_tab'] = $mon_tab;
 ?>
 
 <form action="connexion.php" method="POST">
@@ -47,3 +50,6 @@ else
         }
     }
 }
+
+require('footer.php');
+?>

@@ -30,7 +30,7 @@ else{
 }
 
 
-if ($Nquest==11){
+if ($Nquest==10){
 	$mon_tab = array();
 	$_SESSION['mon_tab'] = $mon_tab;
 	?>
@@ -50,3 +50,7 @@ else {
 	</form>
 	<?php
 }
+
+require('footer.php');
+?>
+

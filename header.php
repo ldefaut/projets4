@@ -39,28 +39,81 @@ $rest = ucwords(substr(onestla, 1, -4));
 
 	if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 	{
-		echo 'Bonjour ' . $_SESSION['pseudo'];
 		?>
+		<div class="cache">
+			
+		</div>
 
-		<a href="index.php">Accueil</a>
-		<a href="ajouter.php">Ajouter une question</a>
-		<?php
-		if ($role=="admin"){
-			?>
-			<a href="verification.php">Verifier une question</a>
-			<?php
-		}
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="index.php">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="ajouter.php">Ajouter une question</a>
+					</li>
+					<?php
+					if ($role=="admin" or $role=="superadmin"){
+						?>
+						<li class="nav-item">
+							<a class="nav-link" href="verification.php">Verifier une question</a>
+						</li>
+						<?php
+					}
+					?>
+					<?php
+					if ($role=="superadmin"){
+						?>
+						<li class="nav-item">
+							<a class="nav-link" href="superAdmin.php">Gérer les comptes</a>
+						</li>
+						<?php
+					}
+					?>
+				</ul>
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<?php
+						echo '<strong class="nav-link active">Bonjour ' . $_SESSION['pseudo'].'</strong>';
+						?>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="deconnexion.php">Se Déconnecter</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 
-		?>
-		<a href="deconnexion.php">Se Déconnecter</a>
 		<?php
 	}
 	else{
 		?>
-		<a href="index.php">Index</a>
-		<a href="ajouter.php">Ajouter une question</a>
-		<a href="connexion.php">Se connecter</a>
-		<a href="inscription.php">Créer un compte</a>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="index.php">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="ajouter.php">Ajouter une question</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="connexion.php">Se connecter</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="inscription.php">Créer un compte</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
 
 		<?php
 	}

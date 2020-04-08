@@ -3,7 +3,9 @@
 
 require("header.php");
 
-$maxID = $BDD -> query('SELECT COUNT(*) from reponses');
+$status = 'V&amp;eacute;rifi&amp;eacute;e';
+
+$maxID = $BDD -> query("SELECT COUNT(*) from reponses where status ='$status'");
 $idmax= (int)$maxID->fetchColumn();
 $_SESSION['mon_tab'] = '';
 $mon_tab  = array();
@@ -20,3 +22,9 @@ $_SESSION['mon_tab'] = $mon_tab;
 </form>
 
 <h3>Il y a <?php echo $idmax ?> questions dans la base de donnée</h3>
+
+
+<?php
+
+require('footer.php');
+?>

@@ -2,88 +2,110 @@
 
 require("header.php");
 
+$mon_tab  = array();
+$_SESSION['mon_tab'] = $mon_tab;
 
 ?>
-<table>
+<table class="table">
 	<thead>
 		<tr>
-			<th></th>
-			<th>Questions</th>
-			<th>Reponses</th>
-			<th>Explciations</th>
-			<th>Niveau</th>
-			<th>Statut</th>
+			<th scope="col"></th>
+			<th scope="col">Questions</th>
+			<th scope="col">Reponses</th>
+			<th scope="col">Explciations</th>
+			<th scope="col">Niveau</th>
+			<th scope="col">Statut</th>
+			<th scope="col"></th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php
 		$count = 0;
-		$result= $BDD->query('SELECT * from reponses');
+		$result= $BDD->query('SELECT * from reponses ORDER by status');
 		while ($donnees = $result->fetch())
 		{
+			$safeQuestion =  html_entity_decode(htmlspecialchars_decode($donnees['question']));
 			$count = $count + 1;
 			?>
 			<tr id="<?php echo $donnees['id'];?>">
 				<form action="verification.php" method="post" accept-charset="utf-8">
-					<td><?php echo $count;?></td>
-					<td>
-						<input type="text" name="question" id="question" value="<?php echo html_entity_decode(htmlspecialchars_decode($donnees['question']));?>">
-					</td>
-					<td>		
-						<select name="reponse" id="reponse">
-							<?php 
-							if ($donnees['reponse']=='VRAI'){?>
-								<option value="VRAI" selected>Vrai</option>
-								<option value="FAUX">Faux</option>
+					<div class="form-group">
+						<th scope="row"><?php echo $count;?></th>
+						<td>
+							<input class="form-control" type="text" name="question" id="question" value="<?php echo $safeQuestion;?>">
+						</td>
+						<td>		
+							<select class="form-control" name="reponse" id="reponse">
+								<?php 
+								if ($donnees['reponse']=='VRAI'){?>
+									<option value="VRAI" selected>Vrai</option>
+									<option value="FAUX">Faux</option>
+									<?php
+								}
+								elseif ($donnees['reponse']=='FAUX') {?>
+									<option value="VRAI">Vrai</option>
+									<option value="FAUX" selected>Faux</option>
+									<?php
+								}
+								?>
+							</select>
+						</td>
+						<td>
+							<textarea class="form-control" name="explication" id="explication" id="exampleFormControlTextarea1"><?php echo html_entity_decode(htmlspecialchars_decode($donnees['explication']));?></textarea>
+						</td>
+						<td>
+							<select class="form-control" name="niveau" id="niveau">
 								<?php
-							}
-							elseif ($donnees['reponse']=='FAUX') {?>
-								<option value="VRAI">Vrai</option>
-								<option value="FAUX" selected>Faux</option>
-								<?php
-							}
-							?>
-						</select>
-					</td>
-					<td>
-						<input type="text" name="explication" id="explication" value="<?php echo html_entity_decode(htmlspecialchars_decode($donnees['explication']));?>">
-					</td>
-					<td>
-						<select name="niveau" id="niveau">
+								if ($donnees['niveau']==1) {?>
+									<option value="1" selected>Niveau 1</option>
+									<option value="2">Niveau 2</option>
+									<option value="3">Niveau 3</option>
+									<?php
+								}
+								elseif ($donnees['niveau']==2) {?>
+									<option value="1">Niveau 1</option>
+									<option value="2" selected>Niveau 2</option>
+									<option value="3">Niveau 3</option>
+									<?php
+								}
+								elseif ($donnees['niveau']==3) {?>
+									<option value="1">Niveau 1</option>
+									<option value="2">Niveau 2</option>
+									<option value="3" selected>Niveau 3</option>
+									<?php
+								}
+								?>
+							</select>
+						</td>
+						<td>
+							
+							<select class="form-control" name="status" id="status">
+								<option value="Vérifiée">Vérifier</option>
+								<option value="A vérifier">à vérifier</option>
+								<option value="Rejetée">Rejeter</option>
+							</select>
 							<?php
-							if ($donnees['niveau']==1) {?>
-								<option value="1" selected>Niveau 1</option>
-								<option value="2">Niveau 2</option>
-								<option value="3">Niveau 3</option>
+							if (html_entity_decode(htmlspecialchars_decode($donnees['status']))=="Vérifiée") {
+								?>
+								<small class="form-text text-success"><?php echo html_entity_decode(htmlspecialchars_decode($donnees['status']));?></small>							
+								<?php 
+							}elseif (html_entity_decode(htmlspecialchars_decode($donnees['status']))=="A vérifier") {
+								?>
+								<small class="form-text text-warning"><?php echo html_entity_decode(htmlspecialchars_decode($donnees['status']));?></small>
 								<?php
 							}
-							elseif ($donnees['niveau']==2) {?>
-								<option value="1">Niveau 1</option>
-								<option value="2" selected>Niveau 2</option>
-								<option value="3">Niveau 3</option>
+							elseif (html_entity_decode(htmlspecialchars_decode($donnees['status']))=="Rejetée") {
+								?>
+								<small class="form-text text-danger"><?php echo html_entity_decode(htmlspecialchars_decode($donnees['status']));?></small>
 								<?php
-							}
-							elseif ($donnees['niveau']==3) {?>
-								<option value="1">Niveau 1</option>
-								<option value="2">Niveau 2</option>
-								<option value="3" selected>Niveau 3</option>
-								<?php
-							}
-							?>
-						</select>
-					</td>
-					<td>
-						<?php echo html_entity_decode(htmlspecialchars_decode($donnees['status']));?>
-						<select name="status" id="status">
-							<option value="Vérifiée">Vérifier</option>
-							<option value="A vérifier">à vérifier</option>
-							<option value="Rejetée">Rejeter</option>
-						</select>
-					</td>
-					<td>
-						<input type="hidden" name="id" value="<?php echo $donnees['id'];?>">
-						<button type="submit" name="verif" value="<?php echo $donnees['id'];?>">Vrifier</button>
-					</td>
+							}?>
+							
+						</td>
+						<td>
+							<input type="hidden" name="id" value="<?php echo $donnees['id'];?>">
+							<button type="submit" name="verif" class="btn btn-outline-dark" value="<?php echo $donnees['id'];?>">Vérifier</button>
+						</td>
+					</div>
 				</form>
 				<?php 
 				$ID = isset($_POST['id']) ? $_POST['id'] : NULL;
@@ -108,3 +130,8 @@ require("header.php");
 	</tbody>
 </table>
 
+
+
+<?php
+require('footer.php');
+?>

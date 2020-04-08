@@ -2,6 +2,8 @@
 
 require("header.php");
 
+$mon_tab  = array();
+$_SESSION['mon_tab'] = $mon_tab;
 
 ?>
 <h1>Ajouter une question</h1>
@@ -47,7 +49,7 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 		$idmax= (int)$maxID->fetchColumn();
 		$NewID = $idmax+1;
 
-		$BDD-> query("INSERT INTO reponses(question, reponse, explication, niveau, id) VALUES('$safeQuestion', '$safeReponse', '$safeExplication', '$safeNiveau', '$NewID')");
+		$BDD-> query("INSERT INTO reponses(question, reponse, explication, niveau, id, status) VALUES('$safeQuestion', '$safeReponse', '$safeExplication', '$safeNiveau', '$NewID', 'A vérifier')");
 
 		header('Location: http://projets4/ajouter.php');
 
@@ -61,3 +63,4 @@ else{
 	<?php
 }
 // echo $idmax	;
+require('footer.php');
