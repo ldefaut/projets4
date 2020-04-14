@@ -1,13 +1,91 @@
+@font-face { font-family: Bahnschrift; 
+	src: url('../fonts/BAHNSCHRIFT.ttf'); 
+} 
+
+body {
+	font-family: Bahnschrift;
+}
+
+.overflow{
+	overflow-y: hidden;
+}
+
+#home{
+	text-align: center;
+	/*background-color: lightgreen;*/
+}
+
 .navbar{
+	transition: background-color 0.5s ease;
+	background-color: #f8f9fa0d!important;
 	top: 0px;
 	position: fixed;
 	width: 100%;
 	z-index: 10;
 }
 
-.cache{
-	height: 100px;
+.navbar a{
+	color: #fff!important;
+	transition: color 0.5s ease;
 }
+
+.navbar:hover{
+	background-color: #fff!important;
+	color: white!important;
+}
+
+.navbar:hover a{
+	color: #000111!important;
+}
+
+.page .parts:first-of-type{
+	padding-top: 56px;
+}
+.parts{
+	height: 45%;
+	background-color: #f0932b;
+}
+.parts:first-of-type{
+	background-color: #30336b;
+	color: white;
+}
+
+.parts .img_acc{
+	width: 60%;
+}
+
+.bandeau {
+	background: linear-gradient(0deg, #f0932b 50%, #30336b	 50%);
+	max-width: 100%;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	transform: translate3d(0, 0, 0);
+}
+
+.bandeau > div {
+	height: 80px;
+	width: 6894px;
+	background: url("../images/bande.png");
+	transform: translate3d(0, 0, 0);
+}
+.bandeau .move {
+	animation: moveSlideshow 25s linear infinite;
+}
+
+@keyframes moveSlideshow {
+	100% { 
+		transform: translateX(-66.666%);  
+	}
+}
+
+
+.page .btn {
+	font-size: 2rem!important;
+	margin : 2rem 3rem;
+}
+
+
 
 #searchBar {
 	position: fixed;

@@ -17,7 +17,7 @@ if (count($mon_tab)==0 and $Nquest!=1){
 
 
 
-print_r($Nquest); 
+// print_r($Nquest); 
 
 
 $maxID = $BDD -> query('SELECT COUNT(*) from reponses');
@@ -49,7 +49,6 @@ array_push($mon_tab, $GetId);
 
 
 $_SESSION['mon_tab'] = $mon_tab;
-print_r($mon_tab);
 
 
 while ($donnees = $result->fetch())

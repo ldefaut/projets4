@@ -32,7 +32,7 @@ $_SESSION['mon_tab'] = $mon_tab;
 					<div class="form-group">
 						<th scope="row"><?php echo $count;?></th>
 						<td>
-							<input class="form-control" type="text" name="question" id="question" value="<?php echo $safeQuestion;?>">
+							<textarea class="form-control" name="question" id="question" id="exampleFormControlTextarea1"><?php echo html_entity_decode(htmlspecialchars_decode($donnees['question']));?></textarea>
 						</td>
 						<td>		
 							<select class="form-control" name="reponse" id="reponse">

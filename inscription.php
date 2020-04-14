@@ -5,30 +5,33 @@ $mon_tab  = array();
 $_SESSION['mon_tab'] = $mon_tab;
 ?>
 
-<div class="container">
-	<div class="border rounded p-5 m-5">
-		<form action="inscription.php" method="POST">
-			<h1>Inscription</h1>
-			<div class="form-group">
-				<label for="username"><b>Nom d'utilisateur</b></label>
-				<input type="text" class="form-control" placeholder="Entrer le nom d'utilisateur" name="username" id="username" required>
-			</div>
-			<div class="form-group">
-				<label for="email"><b>Adresse Email</b></label>
-				<input type="email" class="form-control" placeholder="Entrer le nom d'utilisateur" name="email" id="email" required>
-			</div>
-			<div class="form-group">
-				<label for="password"><b>Mot de passe</b></label>
-				<input type="password" class="form-control" placeholder="Entrer le mot de passe" id="password" name="password" required>
-			</div>
-			<div class="form-group">
-				<label for="conf-password"><b>Confirmation du mot de passe</b></label>
-				<input type="password" class="form-control" placeholder="Confirmez le mot de passe" id="conf-password" name="conf-password" required>
-			</div>
-			<input class="btn btn-primary" type="submit" id='submit' value='Créer un compte'>
-		</form>
+<div class="mt-auto mb-auto">
+	<div class="container w-50">
+		<div class="border rounded p-5 m-5">
+			<form action="inscription.php" method="POST">
+				<h1>Inscription</h1>
+				<div class="form-group">
+					<label for="username"><b>Nom d'utilisateur</b></label>
+					<input type="text" class="form-control" placeholder="Entrer le nom d'utilisateur" name="username" id="username" required>
+				</div>
+				<div class="form-group">
+					<label for="email"><b>Adresse Email</b></label>
+					<input type="email" class="form-control" placeholder="Entrer le nom d'utilisateur" name="email" id="email" required>
+				</div>
+				<div class="form-group">
+					<label for="password"><b>Mot de passe</b></label>
+					<input type="password" class="form-control" placeholder="Entrer le mot de passe" id="password" name="password" required>
+				</div>
+				<div class="form-group">
+					<label for="conf-password"><b>Confirmation du mot de passe</b></label>
+					<input type="password" class="form-control" placeholder="Confirmez le mot de passe" id="conf-password" name="conf-password" required>
+				</div>
+				<input class="btn btn-primary" type="submit" id='submit' value='Créer un compte'>
+			</form>
+		</div>
 	</div>
 </div>
+
 
 
 <?php 

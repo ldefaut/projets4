@@ -30,7 +30,7 @@ else{
 }
 
 
-if ($Nquest==10){
+if ($Nquest==4){
 	$mon_tab = array();
 	$_SESSION['mon_tab'] = $mon_tab;
 	?>
