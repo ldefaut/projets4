@@ -38,8 +38,8 @@ $_SESSION['mon_tab'] = $mon_tab;
 		<div class="container h-100">
 			<div class="row h-100">
 				<div class="col-6 mt-auto mb-auto">
-					<h4>Testez vos connaissances</h4><br/>
-					<h2>19 Questions</h2><br/>
+					<h3>Testez vos connaissances</h3><br/>
+					<h2>Un quizz de 19 Questions</h2><br/>
 				</div>
 				<div class="col-6 mt-auto mb-auto">
 					<button class="btn btn-success">VRAI</button><button class="btn btn-danger">FAUX</button>
