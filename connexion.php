@@ -5,8 +5,20 @@ $mon_tab  = array();
 $_SESSION['mon_tab'] = $mon_tab;
 ?>
 
-<div class="container w-50">
-    <div class="border rounded p-5 m-5">
+<section id="formulaire" class="page">
+    <div class="parts">
+
+    </div>
+    <div class="bandeau">
+        <div class="move">
+            
+        </div>
+    </div>
+    <div class="parts">
+
+    </div>
+
+    <div class="rounded p-5 formulaire">
         <form action="connexion.php" method="POST">
 
             <h1>Connexion</h1>
@@ -45,7 +57,7 @@ $_SESSION['mon_tab'] = $mon_tab;
                 $_SESSION['id'] = $resultat['id'];
                 $_SESSION['pseudo'] = $username;
                 echo 'Vous êtes connecté !';
-                header('Location: http://projets4/index.php');
+                header('Location: index.php');
 
             }
             else {
@@ -60,4 +72,5 @@ $_SESSION['mon_tab'] = $mon_tab;
 
 
     </div>
-</div>  
+
+</section>

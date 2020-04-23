@@ -1,9 +1,33 @@
 @font-face { font-family: Bahnschrift; 
 	src: url('../fonts/BAHNSCHRIFT.ttf'); 
-} 
+}
 
+html{
+	height: 100%;
+}
 body {
+	height: 100%;
 	font-family: Bahnschrift;
+}
+
+h1{
+	font-size: 3.5rem;
+}
+
+h2{
+	font-size: 3rem;
+}
+
+h3{
+	font-size: 2.5rem;
+}
+
+h4 {
+	font-size: 2rem;
+}
+
+h5{
+	font-size: 1.5rem;	
 }
 
 .overflow{
@@ -21,12 +45,18 @@ body {
 	top: 0px;
 	position: fixed;
 	width: 100%;
-	z-index: 10;
+	z-index: 20;
 }
 
-.navbar a{
+.navbar .nav-link{
 	color: #fff!important;
 	transition: color 0.5s ease;
+	font-size: 2rem;
+	line-height: 2;
+}
+
+.navbar-toggler{
+	font-size: 3rem;
 }
 
 .navbar:hover{
@@ -34,12 +64,21 @@ body {
 	color: white!important;
 }
 
-.navbar:hover a{
+.navbar:hover .nav-link{
+	color: #000111!important;
+}
+
+nav.admin{
+	background-color: #fff!important;
+	border-bottom: 1px solid #30336b;
+}
+
+nav.admin .nav-link{
 	color: #000111!important;
 }
 
 .page .parts:first-of-type{
-	padding-top: 56px;
+	padding-top: 120px;
 }
 .parts{
 	height: 50%;
@@ -50,9 +89,6 @@ body {
 	color: white;
 }
 
-.parts .img_acc{
-	width: 60%;
-}
 
 .bandeau {
 	background: linear-gradient(0deg, #f0932b 50%, #30336b	 50%);
@@ -63,11 +99,12 @@ body {
 	transform: translate3d(0, 0, 0);
 }
 
-.bandeau > div {
-	height: 80px;
+.bandeau > .move {
+	height: 60px;
 	width: 6894px;
 	background-image: url("../images/bande.png");
 	transform: translate3d(0, 0, 0);
+	background-size: contain;
 }
 .bandeau .move {
 	animation: moveSlideshow 25s linear infinite;
@@ -81,11 +118,264 @@ body {
 
 
 .page .btn {
-	font-size: 2rem!important;
-	margin : 2rem 3rem;
+	margin: 3rem;
+	font-size : 3rem;
+}
+
+#home .parts .img_acc{
+	width: 40%;
+}
+
+#home .parts{
+	height: 33%;
+}
+
+#home .parts:first-of-type {
+	height: 65%;
+}
+
+#home p, #rep p {
+	font-size: 1.5rem;
+}
+
+#home .parts:last-of-type .col-5>*{
+	margin-bottom: 0!important;
+}
+
+#home .parts:last-of-type .col-5>h3{
+	margin-top: 1rem!important;
+}
+
+.group-btn .btn{
+	width: 80%;
+}
+
+#home .group-btn form .btn{
+	width: 90%;
+}
+
+#game {
+	text-align: center;
+}
+
+#game .parts {
+	height: 30%!important;
+}
+
+#game .parts:first-of-type{
+	height: 65%!important;
+}
+
+#game .conteneur, #rep .conteneur{
+	width: 100%;
+	height: 100%;
+}
+
+#game img{
+	width: 50%;
+	margin-bottom : 50px;
 }
 
 
+#game .conteneur h1{
+	font-size: 5rem;
+	z-index: 1000;
+}
+
+#game .bandeau {
+	height: 8%;
+	background: #f9ca24;
+}
+
+#game .parts:first-of-type {
+	height: 50%;
+}
+
+#rep {
+	text-align: center;
+}
+
+#rep .parts:first-of-type{
+	height: 60%;
+}
+
+#rep .col-5{
+	text-align: end;
+}
+
+#rep img{
+	width: 20%;
+	/*height: 100%;*/
+	object-fit: contain;
+}
+
+#rep img.full{
+	width: 100%!important;
+}
+
+#rep .parts .container-fluid{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+
+#rep .bandeau{
+	height:8%;
+}
+
+#rep .bandeau>div{
+	width: fit-content;
+	height: 100%;
+}
+
+#rep .bandeau span{
+	position: relative;
+	float: left;
+	margin-left: 10px;
+	width: 20px;
+	height: 40px;
+	border: 1px solid #30336b;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#rep .bandeau span:first-of-type{
+	margin-left: unset;
+}
+
+#rep p {
+	padding: 30px;
+	background-color: white;
+	border-radius: 10px;
+	margin-bottom: 10%;
+	color: black;
+}
+
+#rep p:before {
+	bottom: 10%;
+	content: ' ';
+	position: absolute;
+	left: 0px;
+	border: 32px solid;
+	border-color: #fff transparent transparent transparent;
+}
+
+#rep .bandeau.vrai{
+	background: #28a745;
+}
+
+#rep .bandeau.faux{
+	background: #bd2130;
+}
+
+#rep .parts .group-btn .btn{
+	width: 90%;
+}
+
+#rep .parts:last-of-type{
+	height: 23%!important;
+}
+
+#rep .parts .btn, #game .parts .btn{
+	font-size: 5rem;
+}
+
+#resultat .parts:first-of-type{
+	height: 50%;
+}
+
+#resultat {
+	text-align: center;
+}
+
+#resultat h1{
+	font-size: 20rem;
+}
+
+#resultat .boutons a {
+	color: black;
+}
+
+#resultat .boutons a:hover{
+	text-decoration: none;
+}
+
+#formulaire .formulaire{
+	padding-top: 200px;
+	background: #30336b;
+}
+
+#formulaire .formulaire{
+	z-index: 10;
+	width: 80%;
+	background: white;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#arriere {
+	position: fixed;
+	width: 100%;
+}
+
+#arriere .bandeau {
+	height: 10%;
+}
+
+#formulaire .formulaire label, #formulaire .formulaire input{
+	font-size: 2rem;
+}
+
+#ajouter .parts {
+	text-align: center;
+}
+
+#ajouter .btn{
+	font-size : 4rem;
+}
+
+.ajouter {
+	padding-top: 100px;
+}
+
+.ajouter .formulaire{
+	width: 100%!important;
+	position: relative!important;
+	transform: unset!important;
+	top: 0!important;
+	left: 0!important;
+}
+
+.parts .container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+
+
+.btn img{
+	width: fit-content;
+	border-radius: 1rem!important;
+	padding: 1rem!important;
+	font-size: 4rem!important;
+}
+
+.text, .boutons, #rep img, #rep p{
+
+	display:inline-block;
+	vertical-align:middle;
+}
+
+#noGame{
+	padding-top: 100px;
+}
+
+#noGame .btn{
+	font-size: 1rem!important;
+}
 
 #searchBar {
 	position: fixed;
@@ -115,7 +405,122 @@ body {
 
 
 @media (min-width: 1000px){
+	html{
+		min-height: 100%;
+		height: initial;
+	}
+
+	.nav-link{
+		font-size: 1rem!important;
+		line-height: 1!important;
+	}
+	.navbar-toggler {
+		font-size: 1.5rem!important;
+	}
+
 	.parts {
-		height: 45%;
+		height: 47%!important;
+	}
+
+	#home .parts .img_acc{
+		width: 60%;
+	}
+
+	h1{
+		font-size: 2.25rem;
+	}
+
+	h2{
+		font-size: 2rem;
+	}
+
+	h3{
+		font-size: 1.75rem;
+	}
+
+	h4 {
+		font-size: 1.5rem;
+	}
+
+	h5{
+		font-size: 1.25rem;	
+	}
+
+	label, #home p, input, #rep p{
+		font-size: 1rem!important;
+	}
+
+	.page .parts:first-of-type{
+		padding-top: 56px;
+	}
+
+	.page .btn {
+		margin: 1rem;
+	}
+
+	#home .parts{
+		height : 35%!important;
+	}
+
+	#home .parts:first-of-type{
+		height: 60%!important;
+	}
+
+	#game .parts{
+		height: 25%!important;
+	}
+
+	#game img{
+		width: 15%;
+		margin-bottom: 50px;
+	}
+
+	#game .parts:first-of-type{
+		height: 70%!important;
+	}
+
+	#rep .parts .container-fluid{
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+
+	#rep .parts:first-of-type{
+		height: 70%!important;
+	}
+
+	#rep p{
+		width: 70%;
+	}
+
+	#rep p:before{
+		bottom: auto;
+	}
+
+	#rep img.full{
+		height: 100%;
+		width: auto!important;
+	}
+
+	#resultat .parts{
+		height: 35%!important;
+	}
+
+	#resultat .parts:first-of-type{
+		height: 60%!important;
+	}
+
+	#resultat h1{
+		font-size: 10rem;
+	}
+
+	#formulaire .formulaire{
+		padding-top: 100px; 
+		padding-bottom : 100px;
+	}
+	.btn{
+		border-radius: 0.25rem!important;
+		padding: 0.375rem 0.75rem!important;
+		font-size: 2rem!important;
 	}
 } 

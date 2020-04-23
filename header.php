@@ -9,7 +9,7 @@ $rest = ucwords(substr(onestla, 1, -4));
 <head>
 	<meta charset="UTF-8">
 	<title>Covid 19/19 - <?php echo $rest;?></title>
-	<link rel="stylesheet" href="./lib/bootstrap-4.3.1/bootstrap.css">
+	<link rel="stylesheet" href="./lib/bootstrap-4.4.1/css/bootstrap.css">
 	<link href="./css/style.css" rel="stylesheet">
 </head>
 <body>

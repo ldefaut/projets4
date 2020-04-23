@@ -57,24 +57,64 @@ while ($donnees = $result->fetch())
 	$question = html_entity_decode(htmlspecialchars_decode($donnees['question']));
 	$reponse = html_entity_decode(htmlspecialchars_decode($donnees['reponse']));
 	$explication = html_entity_decode(htmlspecialchars_decode($donnees['explication']));
-	$count = $count + 1;
 	?>
-	<div id="<?php echo $count?>">
-		<h1>Jeu</h1>
-		<br/>
-		<p>Question <?php echo $Nquest?></p>	
-		<h5><?php echo $question;?></h5>
+	<section id="game" class="page">
+		<div class="conteneur">
+			<div class="parts">
+				
+				<img src="./images/logo_accueil.png">
+				<div class="container">
+					<div class="text-center">
 
-		<br/><br/>
-		<form method="post" action="reponse.php">
-			<input type="hidden" name="Nquest" value="<?php echo $Nquest;?>">
-			<input type="hidden" name="Result" value="<?php echo $Result;?>">
-			<input type="hidden" name="id" value="<?php echo $donnees['id'];?>">
-			<input type="submit" name="vrai" value="Vrai" />
-			<input type="submit" name="faux" value="Faux" />
-		</form>
+						<h4>Question <?php echo $Nquest?></h4>	
+						<h2><?php echo $question;?></h2>
 
-	</div>
+						<br/><br/>
+					</div>
+				</div>
+			</div>
+			<div class="bandeau">
+				<div class="move">
+					
+				</div>
+			</div>
+			<div class="parts">
+				<div class="container h-100">
+					<div class="row">
+						<div class="col-7 ml-auto mr-auto">
+							<div class="text-center group-btn">
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-6">
+											<form method="post" action="reponse.php">
+												<input type="hidden" name="Nquest" value="<?php echo $Nquest;?>">
+												<input type="hidden" name="Result" value="<?php echo $Result;?>">
+												<input type="hidden" name="id" value="<?php echo $donnees['id'];?>">
+
+												<input type="submit" name="vrai" value="Vrai" class="btn btn-success"/>
+											</form>
+										</div>
+										<div class="col-6">
+											<form method="post" action="reponse.php">
+												<input type="hidden" name="Nquest" value="<?php echo $Nquest;?>">
+												<input type="hidden" name="Result" value="<?php echo $Result;?>">
+												<input type="hidden" name="id" value="<?php echo $donnees['id'];?>">
+												<input type="submit" name="faux" value="Faux" class="btn btn-danger"/>											
+											</form>
+											
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>						
+					</div>
+				</div>
+			</div>
+
+		</div>	
+
+	</section>
+
 
 	<?php 
 }
