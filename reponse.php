@@ -27,18 +27,23 @@ $Numero = $Nquest - 1;
 $maxID = $BDD -> query("SELECT COUNT(*) from reponses where status = 'V&amp;eacute;rifi&amp;eacute;e'");
 $idmax= (int)$maxID->fetchColumn();
 
+
 ?>
 
 
 <section id="rep" class="page">
 	<div class="conteneur">
 		<div class="parts">
+			<div class="background">
+				<img src="../images/logo_filli.png">
+			</div>
 			<div class="container-fluid h-100">
 				<div class="row h-100">
 					<?php 
 					if ($cliqued == $reponse) {
 						?>
 						<div class="col-5 h-100">
+
 							<div class="container-fluid h-100">
 								<img src="../images/medecin_content.png" class="medecin">
 							</div>
@@ -46,27 +51,29 @@ $idmax= (int)$maxID->fetchColumn();
 						</div>
 						<div class="col-7">
 							<div class="container-fluid h-100">
+								
 								<p>
-
-
-
+									<span class="text-success"><?php echo "Vous avez raison<br/>";?></span><br/>
 									<?php
-
-
-
-									echo $reponse." : Vous avez raison<br/>".$explication;
+									echo "La bonne réponse était ".$reponse."<br/><br/>".$explication;
 									$Result = $Result + 1;
 									if ($lien!='') {
 										if ($titre!='') {
 											?>
 											<br/>
 											<br/>
-											En apprendre davantage : <a href="<?php echo $lien ?>"><?php echo $titre?></a> 
+											<span class="link">
+												En apprendre davantage :<br/> <a href="<?php echo $lien ?>" target="_blank"><?php echo $titre?></a> 
+											</span>
 											<?php
 										}
 										else {
 											?>
-											En apprendre davantage sur <a href="<?php echo $lien ?>"><?php echo $lien?></a> 
+											<br/>
+											<br/>
+											<span class="link">
+												En apprendre davantage sur <br/> <a href="<?php echo $lien ?>" target="_blank"><?php echo $lien?></a>
+											</span>
 											<?php
 										}
 									}
@@ -85,26 +92,29 @@ $idmax= (int)$maxID->fetchColumn();
 						</div>
 						<div class="col-7">
 							<div class="container-fluid h-100">
+								
 								<p>
-
-
+									<span class="text-danger"><?php echo "Vous avez tort<br/>";?></span><br/>
 									<?php
-
-
-
-									echo $reponse." : Vous avez tort<br/>".$explication;
-
+									echo "La bonne réponse était ".$reponse."<br/><br/>".$explication;
 									if ($lien!='') {
 										if ($titre!='') {
 											?>
 											<br/>
 											<br/>
-											En apprendre davantage : <a href="<?php echo $lien ?>"><?php echo $titre?></a> 
+											<span class="link">
+												En apprendre davantage :<br/> <a href="<?php echo $lien ?>" target="_blank"><?php echo $titre?></a> 
+											</span>
 											<?php
 										}
 										else {
 											?>
-											En apprendre davantage sur <a href="<?php echo $lien ?>"><?php echo $lien?></a> 
+											<br/>
+											<br/>
+											<hr>
+											<span class="link">
+												En apprendre davantage sur <br/> <a href="<?php echo $lien ?>" target="_blank"><?php echo $lien?></a>
+											</span>
 											<?php
 										}
 									}
@@ -118,6 +128,7 @@ $idmax= (int)$maxID->fetchColumn();
 					?>
 				</div>
 			</div>
+			
 		</div>
 		<?php 
 		if ($cliqued == $reponse) {
@@ -179,7 +190,7 @@ $idmax= (int)$maxID->fetchColumn();
 			<div class="container h-100">
 				<div class="row">
 					
-					<div class="col-7 ml-auto mr-auto">
+					<div class="col-lg-7 ml-auto mr-auto">
 						<div class="group-btn">
 							<div class="container-fluid">
 								<div class="row">

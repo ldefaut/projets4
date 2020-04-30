@@ -20,21 +20,50 @@ if (count($mon_tab)==0 and $Nquest!=1){
 // print_r($Nquest); 
 
 
-$maxID = $BDD -> query('SELECT COUNT(*) from reponses');
+$maxID = $BDD -> query("SELECT COUNT(*) from reponses where status = 'V&amp;eacute;rifi&amp;eacute;e'");
 $idmax= (int)$maxID->fetchColumn();
 
 $randID = rand(1, $idmax);
 $count = 0;
-
-$getID = $BDD -> query("SELECT id from reponses where status = 'V&amp;eacute;rifi&amp;eacute;e' ORDER BY RAND() limit 1");
-$GetId = $getID->fetchColumn();
-
-
-while (in_array($GetId, $mon_tab)) {
-	$getID = $BDD -> query("SELECT id from reponses where status = 'V&amp;eacute;rifi&amp;eacute;e' ORDER BY RAND() limit 1");
+if ($Nquest<2) {
+	$getID = $BDD -> query("SELECT id from reponses where status = 'V&amp;eacute;rifi&amp;eacute;e' and niveau = 1 ORDER BY RAND() limit 1");
 	$GetId = $getID->fetchColumn();
 
+
+	while (in_array($GetId, $mon_tab)) {
+		$getID = $BDD -> query("SELECT id from reponses where status = 'V&amp;eacute;rifi&amp;eacute;e' and niveau = 1 ORDER BY RAND() limit 1");
+		$GetId = $getID->fetchColumn();
+
+	}
 }
+if (2<=$Nquest and $Nquest<5) {
+	$getID = $BDD -> query("SELECT id from reponses where status = 'V&amp;eacute;rifi&amp;eacute;e' and niveau = 2 ORDER BY RAND() limit 1");
+	$GetId = $getID->fetchColumn();
+
+
+	while (in_array($GetId, $mon_tab)) {
+		$getID = $BDD -> query("SELECT id from reponses where status = 'V&amp;eacute;rifi&amp;eacute;e' and niveau = 2 ORDER BY RAND() limit 1");
+		$GetId = $getID->fetchColumn();
+
+	}
+}
+
+if (5<=$Nquest) {
+	echo 14<=$Nquest;
+	$getID = $BDD -> query("SELECT id from reponses where status = 'V&amp;eacute;rifi&amp;eacute;e' and niveau = 3 ORDER BY RAND() limit 1");
+	$GetId = $getID->fetchColumn();
+
+
+	while (in_array($GetId, $mon_tab)) {
+		$getID = $BDD -> query("SELECT id from reponses where status = 'V&amp;eacute;rifi&amp;eacute;e' and niveau = 3 ORDER BY RAND() limit 1");
+		$GetId = $getID->fetchColumn();
+
+	}
+}
+
+
+
+
 $result = $BDD ->query("SELECT * FROM reponses where id=".$GetId);
 
 
@@ -81,8 +110,9 @@ while ($donnees = $result->fetch())
 			<div class="parts">
 				<div class="container h-100">
 					<div class="row">
-						<div class="col-7 ml-auto mr-auto">
-							<div class="text-center group-btn">
+
+						<div class="col-lg-7 ml-auto mr-auto">
+							<div class="group-btn">
 								<div class="container-fluid">
 									<div class="row">
 										<div class="col-6">

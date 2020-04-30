@@ -16,6 +16,7 @@ $_SESSION['mon_tab'] = $mon_tab;
 				<th scope="col">Explciations</th>
 				<th scope="col">Niveau</th>
 				<th scope="col">Lien</th>
+				<th scope="col">Titre</th>
 				<th scope="col">Statut</th>
 				<th scope="col"></th>
 			</tr>
@@ -83,6 +84,9 @@ $_SESSION['mon_tab'] = $mon_tab;
 								<textarea class="form-control" name="lien" id="lien"><?php echo html_entity_decode(htmlspecialchars_decode($donnees['lien']));?></textarea>
 							</td>
 							<td>
+								<textarea class="form-control" name="titre" id="titre"><?php echo html_entity_decode(htmlspecialchars_decode($donnees['titre']));?></textarea>
+							</td>
+							<td>
 
 								<select class="form-control" name="status" id="status">
 									<option value="Vérifiée">Vérifier</option>
@@ -120,10 +124,11 @@ $_SESSION['mon_tab'] = $mon_tab;
 					$safeNiveau = htmlspecialchars(htmlentities(isset($_POST["niveau"]) ? $_POST["niveau"] : NULL, ENT_QUOTES), ENT_QUOTES);
 					$safeStatut = htmlspecialchars(htmlentities(isset($_POST["status"]) ? $_POST["status"] : NULL, ENT_QUOTES), ENT_QUOTES);
 					$safeLien = htmlspecialchars(htmlentities(isset($_POST["lien"]) ? $_POST["lien"] : NULL, ENT_QUOTES), ENT_QUOTES);
+					$safeTitre = htmlspecialchars(htmlentities(isset($_POST["titre"]) ? $_POST["titre"] : NULL, ENT_QUOTES), ENT_QUOTES);
 					if ($safeQuestion!='' and $safeReponse!='' and $safeExplication!='' and $safeNiveau!='' and $safeStatut!=''){
 
 
-						$BDD-> query("UPDATE reponses SET question='$safeQuestion', reponse='$safeReponse', explication='$safeExplication', niveau='$safeNiveau', lien = '$safeLien', status='$safeStatut' Where id='$ID'");
+						$BDD-> query("UPDATE reponses SET question='$safeQuestion', reponse='$safeReponse', explication='$safeExplication', niveau='$safeNiveau', lien = '$safeLien', titre = '$safeTitre', status='$safeStatut' Where id='$ID'");
 
 						header('Location: verification.php');
 

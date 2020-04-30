@@ -12,7 +12,7 @@ if (page!=null) {
 	if (Hinit< haut) {
 
 		$(document).ready(function(){
-			if (idPage!="arriere") {
+			if (idPage!="arriere" && idPage!= "home") {
 				$(".page").closest("body").css("overflow", "hidden");
 			}
 			page.style.height = haut + "px";
@@ -47,3 +47,5 @@ if (id=="rep") {
 	$("#rep .bandeau span:nth-child(-n+"+numero+")").css({"background-color": '#30336b', "border": "0"});
 	$("#rep .bandeau span:nth-child(-n+"+result+")").css({"background-color": '#f9ca24', "border": "0"});
 }
+
+
